@@ -1,0 +1,5 @@
+DeskClock app based on AOSP version (b89bbe70df270c344123d7ce2bcecf1a84c399f1 hash)
+
+Improvements:
+
+- DUT will power on 5 minutes before any alarm is triggered (only QCM platform)
