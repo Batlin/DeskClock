@@ -62,7 +62,7 @@ import static android.view.View.VISIBLE;
  */
 public final class TimerFragment extends DeskClockFragment {
 
-    private static final String EXTRA_TIMER_SETUP = "com.android.deskclock.action.TIMER_SETUP";
+    private static final String EXTRA_TIMER_SETUP = "com.androidinspain.deskclock.action.TIMER_SETUP";
 
     private static final String KEY_TIMER_SETUP_STATE = "timer_setup_input";
 

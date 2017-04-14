@@ -43,7 +43,7 @@ public class DeskClockBackupAgent extends BackupAgent {
     private static final LogUtils.Logger LOGGER = new LogUtils.Logger("DeskClockBackupAgent");
 
     public static final String ACTION_COMPLETE_RESTORE =
-            "com.android.deskclock.action.COMPLETE_RESTORE";
+            "com.androidinspain.deskclock.action.COMPLETE_RESTORE";
 
     @Override
     public void onBackup(ParcelFileDescriptor oldState, BackupDataOutput data,

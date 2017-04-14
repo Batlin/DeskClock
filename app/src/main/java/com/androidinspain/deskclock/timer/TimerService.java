@@ -40,7 +40,7 @@ import com.androidinspain.deskclock.uidata.UiDataModel;
  */
 public final class TimerService extends Service {
 
-    private static final String ACTION_PREFIX = "com.android.deskclock.action.";
+    private static final String ACTION_PREFIX = "com.androidinspain.deskclock.action.";
 
     /** Shows the tab with timers; scrolls to a specific timer. */
     public static final String ACTION_SHOW_TIMER = ACTION_PREFIX + "SHOW_TIMER";
@@ -54,7 +54,7 @@ public final class TimerService extends Service {
     public static final String ACTION_ADD_MINUTE_TIMER = ACTION_PREFIX + "ADD_MINUTE_TIMER";
 
     /** Extra for many actions specific to a given timer. */
-    public static final String EXTRA_TIMER_ID = "com.android.deskclock.extra.TIMER_ID";
+    public static final String EXTRA_TIMER_ID = "com.androidinspain.deskclock.extra.TIMER_ID";
 
     private static final String ACTION_TIMER_EXPIRED =
             ACTION_PREFIX + "TIMER_EXPIRED";

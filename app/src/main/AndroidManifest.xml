@@ -146,7 +146,7 @@
 
         <provider
             android:name="com.androidinspain.deskclock.provider.ClockProvider"
-            android:authorities="com.android.deskclock"
+            android:authorities="com.androidinspain.deskclock"
             android:directBootAware="true"
             android:exported="false" />
 
@@ -171,7 +171,7 @@
             android:name="com.androidinspain.deskclock.alarms.PowerOnBroadcastReceiver"
             android:directBootAware="true">
             <intent-filter>
-                <action android:name="com.android.deskclock.REQUEST_POWER_ON" />
+                <action android:name="com.androidinspain.deskclock.REQUEST_POWER_ON" />
             </intent-filter>
         </receiver>
 
@@ -262,7 +262,7 @@
 
             <meta-data
                 android:name="android.appwidget.oldName"
-                android:value="com.android.deskclock.AnalogAppWidgetProvider" />
+                android:value="com.androidinspain.deskclock.AnalogAppWidgetProvider" />
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/analog_appwidget" />
@@ -279,9 +279,9 @@
                 <action android:name="android.intent.action.SCREEN_ON" />
                 <action android:name="android.intent.action.TIME_SET" />
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-                <action android:name="com.android.deskclock.ALARM_CHANGED" />
-                <action android:name="com.android.deskclock.ON_DAY_CHANGE" />
-                <action android:name="com.android.deskclock.WORLD_CITIES_CHANGED" />
+                <action android:name="com.androidinspain.deskclock.ALARM_CHANGED" />
+                <action android:name="com.androidinspain.deskclock.ON_DAY_CHANGE" />
+                <action android:name="com.androidinspain.deskclock.WORLD_CITIES_CHANGED" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"

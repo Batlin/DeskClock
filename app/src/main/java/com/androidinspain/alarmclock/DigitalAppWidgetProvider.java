@@ -103,7 +103,7 @@ public class DigitalAppWidgetProvider extends AppWidgetProvider {
      * the default TimeZone changes days. This affects the widget display because the day-of-week is
      * only visible when the world city day-of-week differs from the default TimeZone's day-of-week.
      */
-    private static final String ACTION_ON_DAY_CHANGE = "com.android.deskclock.ON_DAY_CHANGE";
+    private static final String ACTION_ON_DAY_CHANGE = "com.androidinspain.deskclock.ON_DAY_CHANGE";
 
     /** Intent used to deliver the {@link #ACTION_ON_DAY_CHANGE} callback. */
     private static final Intent DAY_CHANGE_INTENT = new Intent(ACTION_ON_DAY_CHANGE);

@@ -27,7 +27,7 @@ import com.androidinspain.deskclock.controller.Controller;
 public final class Events {
 
     /** Extra describing the entity responsible for the action being performed. */
-    public static final String EXTRA_EVENT_LABEL = "com.android.deskclock.extra.EVENT_LABEL";
+    public static final String EXTRA_EVENT_LABEL = "com.androidinspain.deskclock.extra.EVENT_LABEL";
 
     /**
      * Tracks an alarm event.

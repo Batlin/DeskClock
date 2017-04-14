@@ -10,7 +10,7 @@ import android.util.Log;
  */
 public class PowerOnBroadcastReceiver extends BroadcastReceiver {
 
-    public static final String ACTION_POWER_ON = "com.android.deskclock.REQUEST_POWER_ON";
+    public static final String ACTION_POWER_ON = "com.androidinspain.deskclock.REQUEST_POWER_ON";
     private String TAG = getClass().getName();
 
     @Override
