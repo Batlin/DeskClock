@@ -62,6 +62,7 @@ import com.androidinspain.deskclock.data.DataModel;
 import com.androidinspain.deskclock.provider.AlarmInstance;
 import com.androidinspain.deskclock.uidata.UiDataModel;
 
+import java.lang.reflect.Field;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -623,6 +624,24 @@ public class Utils {
             }
             info.addAction(new AccessibilityActionCompat(
                     AccessibilityActionCompat.ACTION_CLICK.getId(), mLabel));
+        }
+    }
+
+    public static boolean supportsPowerOffWakeUp() {
+        return getConstantThroughReflection("RTC_POWEROFF_WAKEUP") != -1;
+    }
+
+    public static int getConstantThroughReflection(String name) {
+        try {
+            Field f = AlarmManager.class.getDeclaredField(name);
+
+            f.setAccessible(true);
+
+            return (int) f.get(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return -1;
         }
     }
 }

@@ -142,7 +142,8 @@ public final class AlarmStateManager extends BroadcastReceiver {
      * Set as 5 to make it be compatible with android_alarm_type.
      * (@hide at Qualcomm CAF based frameworks)
      */
-    public static final int RTC_POWEROFF_WAKEUP = 5;
+    public static final int RTC_POWEROFF_WAKEUP =
+            Utils.getConstantThroughReflection("RTC_POWEROFF_WAKEUP");
 
     // Boot time. Negative offset applied to the real alarm so DUT
     // has already finished booting before the alarm gets triggered
@@ -1027,7 +1028,9 @@ public final class AlarmStateManager extends BroadcastReceiver {
                     onIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             final AlarmManager am = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-            am.setExact(RTC_POWEROFF_WAKEUP, timeInMillis-BOOT_TIME_MS, onPendingIntent);
+            if(Utils.supportsPowerOffWakeUp())
+                am.setExact(RTC_POWEROFF_WAKEUP, timeInMillis-BOOT_TIME_MS, onPendingIntent);
+
             if (Utils.isMOrLater()) {
                 // Ensure the alarm fires even if the device is dozing.
                 am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);

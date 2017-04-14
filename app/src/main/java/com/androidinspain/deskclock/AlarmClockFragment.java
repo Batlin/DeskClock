@@ -28,6 +28,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -185,6 +186,10 @@ public final class AlarmClockFragment extends DeskClockFragment implements
     public void onStart() {
         super.onStart();
 
+        if (!Utils.supportsPowerOffWakeUp())
+            SnackbarManager.show(Snackbar.make(mMainLayout, R.string
+                    .poweroff_wakeup_not_supported, Snackbar.LENGTH_INDEFINITE));
+
         if (!isTabSelected()) {
             TimePickerDialogFragment.removeTimeEditDialog(getFragmentManager());
         }
@@ -303,11 +308,11 @@ public final class AlarmClockFragment extends DeskClockFragment implements
             // RecyclerView is currently animating -> defer update.
             mRecyclerView.getItemAnimator().isRunning(
                     new RecyclerView.ItemAnimator.ItemAnimatorFinishedListener() {
-                @Override
-                public void onAnimationsFinished() {
-                    setAdapterItems(items, updateToken);
-                }
-            });
+                        @Override
+                        public void onAnimationsFinished() {
+                            setAdapterItems(items, updateToken);
+                        }
+                    });
         } else if (mRecyclerView.isComputingLayout()) {
             // RecyclerView is currently computing a layout -> defer update.
             mRecyclerView.post(new Runnable() {
@@ -429,7 +434,7 @@ public final class AlarmClockFragment extends DeskClockFragment implements
 
         @Override
         public void onLayoutChange(View v, int left, int top, int right, int bottom,
-                int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                                   int oldLeft, int oldTop, int oldRight, int oldBottom) {
             setTabScrolledToTop(Utils.isScrolledToTop(mRecyclerView));
         }
     }

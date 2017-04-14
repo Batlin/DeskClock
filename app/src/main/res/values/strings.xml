@@ -1051,4 +1051,6 @@
     -->
     <string name="alarm_is_snoozed"><xliff:g id="alarm_time" example="14:20">%s</xliff:g> alarm snoozed for 10 minutes</string>
 
+    <!-- String that's shown in a permanent snackbar if the DUT doesn't support RTC_POWEROFF_WAKEUP -->
+    <string name="poweroff_wakeup_not_supported">Your device is not compatible with automatic power on feature</string>
 </resources>
