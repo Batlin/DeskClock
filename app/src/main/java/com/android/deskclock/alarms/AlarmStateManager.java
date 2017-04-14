@@ -30,6 +30,7 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import android.support.v4.app.NotificationManagerCompat;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.deskclock.AlarmAlertWakeLock;
@@ -135,6 +136,19 @@ public final class AlarmStateManager extends BroadcastReceiver {
 
     // Buffer time in seconds to fire alarm instead of marking it missed.
     public static final int ALARM_FIRE_BUFFER = 15;
+
+    /**
+     * Alarm time in {@link System#currentTimeMillis System.currentTimeMillis()}
+     * (wall clock time in UTC), which will wake up the device when
+     * it goes off. And it will power on the devices when it shuts down.
+     * Set as 5 to make it be compatible with android_alarm_type.
+     * (@hide at Qualcomm CAF based frameworks)
+     */
+    public static final int RTC_POWEROFF_WAKEUP = 5;
+
+    // Boot time. Negative offset applied to the real alarm so DUT
+    // has already finished booting before the alarm gets triggered
+    private static final long BOOT_TIME_MS = 60000;
 
     // A factory for the current time; can be mocked for testing purposes.
     private static CurrentTimeFactory sCurrentTimeFactory;
@@ -1009,7 +1023,13 @@ public final class AlarmStateManager extends BroadcastReceiver {
             PendingIntent pendingIntent = PendingIntent.getService(context, instance.hashCode(),
                     stateChangeIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+            Intent onIntent = new Intent(context, PowerOnBroadcastReceiver.class);
+            onIntent.setAction(PowerOnBroadcastReceiver.ACTION_POWER_ON);
+            PendingIntent onPendingIntent = PendingIntent.getBroadcast(context, 0,
+                    onIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
             final AlarmManager am = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+            am.setExact(RTC_POWEROFF_WAKEUP, timeInMillis-BOOT_TIME_MS, onPendingIntent);
             if (Utils.isMOrLater()) {
                 // Ensure the alarm fires even if the device is dozing.
                 am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
