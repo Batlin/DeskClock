@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        applicationId "com.android.deskclock"
+        applicationId "com.androidinspain.deskclock"
         minSdkVersion 21
         targetSdkVersion 25
     }
