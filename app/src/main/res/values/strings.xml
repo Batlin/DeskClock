@@ -21,7 +21,7 @@
 
     <!-- Label shown on launcher icon -->
     <!-- Label for the this application displayed on-screen when this application must be represented to the user. -->
-    <string name="app_label">Clock</string>
+    <string name="app_label">AOSP Clock+</string>
 
     <!-- Setting label on Set alarm screen: Label -->
     <string name="label">Label</string>
