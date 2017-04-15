@@ -147,7 +147,7 @@ public final class AlarmStateManager extends BroadcastReceiver {
 
     // Boot time. Negative offset applied to the real alarm so DUT
     // has already finished booting before the alarm gets triggered
-    private static final long BOOT_TIME_MS = 60000;
+    private static final long BOOT_TIME_MS = 120000;
 
     // A factory for the current time; can be mocked for testing purposes.
     private static CurrentTimeFactory sCurrentTimeFactory;
