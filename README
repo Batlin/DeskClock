@@ -1,5 +1,38 @@
-DeskClock app based on AOSP version (b89bbe70df270c344123d7ce2bcecf1a84c399f1 hash)
+Based on latest AOSP Clock app (b89bbe70df hash) which keeps getting 
+updates from Google, I've built it and added the following features:
 
-Improvements:
+- Automatic power on feature(*). You can turn off your device, 
+go to sleep and... two minutes before the alarm you scheduled is 
+triggered, your device will turn on automatically!
 
-- DUT will power on 5 minutes before any alarm is triggered (only QCM platform)
+- Darker Theme (more comfortable for your eyes!)
+
+And more features to come!
+
+Source code on AOSP (that we have extended):
+
+https://android.googlesource.com/platform/packages/apps/DeskClock.git
+
+* Note: this only works on Qualcomm devices based on CAF. If your device 
+doesn't support this feature, a prompt will be shown when opening the app.
+
+Technical explanation:
+
+Qualcomm based devices (CAF) contain an AlarmManager class which defines 
+a hidden alarm time (not exposed through API), 
+called RTC_POWEROFF_WAKEUP described as follows:
+
+Alarm time in {@link System#currentTimeMillis System.currentTimeMillis()}
+(wall clock time in UTC), which will wake up the device when
+it goes off. And it will power on the devices when it shuts down.
+Set as 5 to make it be compatible with android_alarm_type.
+
+Therefore, you can schedule alarms using this alarm type to power on 
+the DUT at the schedule time you specified.
+
+You should check if the framework your app is running on has this 
+feature or not using reflection.
+
+Lots of ideas are waiting to be implemented using this feature!
+
+Waiting for your feedback!
